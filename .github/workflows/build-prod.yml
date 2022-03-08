@@ -1,0 +1,35 @@
+name: Build Master Image
+
+on:
+  push:
+    branches: ['master']
+    path:
+      - .github/**
+      - src/**
+      - tests/**
+      - docker/**
+      - composer.lock
+      - composer.json
+      - .dockerignore
+  pull_request:
+    branches: ['master']
+    path:
+      - .github/**
+      - src/**
+      - tests/**
+      - docker/**
+      - composer.lock
+      - composer.json
+      - .dockerignore
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Build the Docker image
+      run: export DOCKER_BUILDKIT=1 && docker build -f docker/Dockerfile -t commission-calculator-prod:$(date +%s) . --build-arg CURRENCY_FREAK_API=${{ secrets.currency_freak_api_prod }} --build-arg BIN_TABLE_API=${{ secrets.bin_table_api_prod }}
