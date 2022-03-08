@@ -29,11 +29,11 @@ final class EuroCommission implements CommissionInterface
         bool $autoLoadCurrencyProvider = true
     ) {
         if ($euRate <= 0) {
-            throw new \InvalidArgumentException(sprintf('Eu rate could not be less than , provided: %d', $euRate));
+            throw new \InvalidArgumentException(sprintf('Eu rate could not be less than , provided: %s', $euRate));
         }
 
         if ($noneEuRate <= 0) {
-            throw new \InvalidArgumentException(sprintf('None-eu rate could not be less than 0, provided: %d', $noneEuRate));
+            throw new \InvalidArgumentException(sprintf('None-eu rate could not be less than 0, provided: %s', $noneEuRate));
         }
 
         if ($autoLoadCurrencyProvider) {
@@ -74,6 +74,10 @@ final class EuroCommission implements CommissionInterface
 
     private function ceil(float $value, int $precision): float
     {
+        if ($precision < 0) {
+            throw new \InvalidArgumentException(sprintf('Precision is less than 0: %s', $precision));
+        }
+
         $mult = pow(10, $precision);
 
         return ceil($value * $mult) / $mult;
