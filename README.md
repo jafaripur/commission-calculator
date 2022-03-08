@@ -54,7 +54,7 @@ export DOCKER_BUILDKIT=1 && docker build \
 
 ```
 
-If `.env.local` file exists and configured, the omit docker image builds argument.
+If `.env.local` file exists and configured, omit the docker image builds argument.
 
 Running application from docker image:
 
