@@ -4,7 +4,6 @@ namespace App\Tests\Unit\Service\BinProvider;
 
 use App\Service\BinProvider\Providers\BinTableProvider;
 use App\Service\BinProvider\ServiceInternal\BinInformation;
-use App\Service\HttpRequest\ServiceInternal\Exception\HttpRequestErrorException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class BinTableProviderTest extends KernelTestCase

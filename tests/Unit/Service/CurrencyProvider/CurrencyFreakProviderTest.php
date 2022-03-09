@@ -27,7 +27,6 @@ class CurrencyFreakProviderTest extends KernelTestCase
         $currency->load();
 
         $this->assertNotNull($currency->getBaseCurrency());
-
     }
 
     public function testGetCurrencyRate()
@@ -59,7 +58,7 @@ class CurrencyFreakProviderTest extends KernelTestCase
         $amountInUsd = $currency->convert($amountInJpy, 'GBP', 'USD');
         $amountInEur = $currency->convert($amountInUsd, 'USD', 'EUR');
         $amountInJpyLast = $currency->convert($amountInEur, 'EUR', 'JPY');
-        
+
         $this->assertEquals(10000, $amountInJpyLast);
     }
 }

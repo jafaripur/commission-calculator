@@ -28,7 +28,6 @@ class CurrencyFakeProviderTest extends KernelTestCase
         $currency->load();
 
         $this->assertNotNull($currency->getBaseCurrency());
-
     }
 
     public function testGetCurrencyRate()
@@ -55,17 +54,15 @@ class CurrencyFakeProviderTest extends KernelTestCase
          */
         $currency = static::getContainer()->get(CurrencyFreakProvider::class);
         $currency->load();
-        
+
         $this->assertEquals(100, $currency->convert(100, 'USD', 'USD'));
         $this->assertEquals(91.7481, $currency->convert(100, 'USD', 'EUR'));
         $this->assertEquals(11575.2, $currency->convert(100, 'USD', 'JPY'));
         $this->assertEquals(76.3266, $currency->convert(100, 'USD', 'GBP'));
 
-
         $this->assertEquals(0.6593976777939, $currency->convert(100, 'JPY', 'GBP'));
         $this->assertEquals(131.01592367536, $currency->convert(100, 'GBP', 'USD'));
         $this->assertEquals(15165.355197270675, $currency->convert(100, 'GBP', 'JPY'));
         $this->assertEquals(83.191477534685, $currency->convert(100, 'EUR', 'GBP'));
-        
     }
 }
