@@ -8,7 +8,7 @@ $finder = PhpCsFixer\Finder::create()
         'runtime',
         'var'
     ])
-    ->in(__DIR__ . "/../../");
+    ->in(__DIR__);
 
 $config = new PhpCsFixer\Config();
 
