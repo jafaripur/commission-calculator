@@ -4,7 +4,7 @@ on:
   push:
     branches: ['master']
     path:
-      - .github/**
+      - .github/build-prod.yml
       - src/**
       - tests/**
       - docker/**
@@ -14,7 +14,7 @@ on:
   pull_request:
     branches: ['master']
     path:
-      - .github/**
+      - .github/build-prod.yml
       - src/**
       - tests/**
       - docker/**
