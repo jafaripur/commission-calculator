@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Commission\Commissions\EuroCommission;
-use App\Service\BinProvider\Providers\BinListProvider;
-use App\Service\BinProvider\Providers\BinTableProvider;
-use App\Service\CurrencyProvider\Providers\CurrencyFreakProvider;
+use App\Service\BinProvider\Interface\BinProviderInterface;
+use App\Service\CurrencyProvider\Interface\CurrencyProviderInterface;
 use Generator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,9 +20,9 @@ class CommisionCalculateCommand extends Command
     protected static $defaultDescription = 'Calculate diffrent commission for EU and none-EU country';
 
     public function __construct(
-        private CurrencyFreakProvider $currencyFreak,
-        private BinListProvider $binList,
-        private BinTableProvider $binTable,
+        private CurrencyProviderInterface $currencyFreak,
+        private BinProviderInterface $binList,
+        private BinProviderInterface $binTable,
         private ContainerBagInterface $params
     ) {
         parent::__construct();
