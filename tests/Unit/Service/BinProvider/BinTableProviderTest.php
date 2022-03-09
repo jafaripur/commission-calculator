@@ -4,8 +4,8 @@ namespace App\Tests\Unit\Service\BinProvider;
 
 use App\Service\BinProvider\Providers\BinTableProvider;
 use App\Service\BinProvider\ServiceInternal\BinInformation;
+use App\Service\HttpRequest\ServiceInternal\Exception\HttpRequestErrorException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 
 class BinTableProviderTest extends KernelTestCase
 {
@@ -67,8 +67,9 @@ class BinTableProviderTest extends KernelTestCase
         $bin = static::getContainer()->get(BinTableProvider::class);
 
         try {
-            $response = $bin->get('a');
-        } catch (ClientExceptionInterface $th) {
+            $bin->get('a');
+        } catch (\Throwable $th) {
+            $this->assertInstanceOf(\InvalidArgumentException::class, $th);
             $this->assertEquals(404, $th->getCode());
         }
     }
