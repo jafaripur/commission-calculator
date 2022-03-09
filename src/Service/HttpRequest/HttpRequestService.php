@@ -8,6 +8,7 @@ use App\Service\HttpRequest\Interface\HttpRequestInterface;
 use App\Service\HttpRequest\ServiceInternal\Exception\HttpRequestErrorException;
 use App\Service\HttpRequest\ServiceInternal\HttpResponse;
 use Symfony\Component\HttpClient\Exception\ClientException;
+use Symfony\Component\HttpClient\Exception\ServerException;
 use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -34,7 +35,7 @@ class HttpRequestService implements HttpRequestInterface
                 $response->getHeaders(),
                 $response->getStatusCode()
             );
-        } catch (ClientException|TransportException $th) {
+        } catch (ClientException|TransportException|ServerException $th) {
             throw new HttpRequestErrorException(sprintf('Error on http request with code: %s', $th->getCode()), $th->getCode());
         }
     }
