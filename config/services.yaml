@@ -22,6 +22,7 @@ services:
         bind:
             App\Service\CurrencyProvider\Interface\CurrencyProviderInterface $currencyFreak: '@App\Service\CurrencyProvider\Providers\CurrencyFreakProvider'
             App\Service\BinProvider\Interface\BinProviderInterface $binList: '@App\Service\BinProvider\Providers\BinListProvider'
+            App\Service\BinProvider\Interface\BinProviderInterface $binCodes: '@App\Service\BinProvider\Providers\BinCodesProvider'
             App\Service\BinProvider\Interface\BinProviderInterface $binTable: '@App\Service\BinProvider\Providers\BinTableProvider'
 
     # makes classes in src/ available to be used as services
@@ -46,6 +47,16 @@ services:
             $cacheEnabled: '%env(bool:APP_CURRENCY_FREAK_LOOKUP_CACHE)%'
             $cacheKey: '%env(APP_CURRENCY_FREAK_LOOKUP_CACHE_KEY)%'
             $cacheExpireSecond: '%env(int:APP_CURRENCY_FREAK_LOOKUP_CACHE_EXPIRE_SECOND)%'
+
+    App\Service\BinProvider\Providers\BinCodesProvider:
+        arguments:
+            $http: '@App\Service\HttpRequest\HttpRequestService'
+            $cache: '@cache.app'
+            $token: '%env(APP_BIN_CODES_LOOKUP_API_KEY)%'
+            $endpoint: '%env(APP_BIN_CODES_LOOKUP_ENDPOINT)%'
+            $cacheEnabled: '%env(bool:APP_BIN_CODES_LOOKUP_CACHE)%'
+            $cacheKey: '%env(APP_BIN_CODES_LOOKUP_CACHE_KEY)%'
+            $cacheExpireSecond: '%env(int:APP_BIN_CODES_LOOKUP_CACHE_EXPIRE_SECOND)%'
 
     App\Service\BinProvider\Providers\BinListProvider:
         arguments:

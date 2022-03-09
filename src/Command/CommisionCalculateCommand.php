@@ -23,6 +23,7 @@ class CommisionCalculateCommand extends Command
         private CurrencyProviderInterface $currencyFreak,
         private BinProviderInterface $binList,
         private BinProviderInterface $binTable,
+        private BinProviderInterface $binCodes,
         private ContainerBagInterface $params
     ) {
         parent::__construct();
@@ -47,7 +48,7 @@ class CommisionCalculateCommand extends Command
                 (string) $json['bin'],
                 (float) $json['amount'],
                 (string) $json['currency'],
-                $this->binList, // $this->binTable
+                $this->binList, // $this->binCodes, // $this->binTable
                 $this->currencyFreak,
                 $euRate,
                 $noneEuRate,

@@ -23,7 +23,7 @@ class BinFakerProviderTest extends KernelTestCase
     {
     }
 
-    public function testBinListJp()
+    public function testBinFakeJp()
     {
         /**
          * @var BinFakerProvider
@@ -38,7 +38,7 @@ class BinFakerProviderTest extends KernelTestCase
         $this->assertEquals('Japan', $response->getCountryName());
     }
 
-    public function testBinListGb()
+    public function testBinFakeGb()
     {
         /**
          * @var BinFakerProvider
@@ -53,7 +53,7 @@ class BinFakerProviderTest extends KernelTestCase
         $this->assertEquals('United Kingdom of Great Britain and Northern Ireland', $response->getCountryName());
     }
 
-    public function testBinListNotFound()
+    public function testBinFakeNotFound()
     {
         /**
          * @var BinFakerProvider

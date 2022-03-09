@@ -28,7 +28,7 @@ class BinTableProviderTest extends KernelTestCase
     {
     }
 
-    public function testBinListJp()
+    public function testBinTableJp()
     {
         /**
          * @var BinTableProvider
@@ -43,7 +43,7 @@ class BinTableProviderTest extends KernelTestCase
         $this->assertEquals('Japan', $response->getCountryName());
     }
 
-    public function testBinListGb()
+    public function testBinTableGb()
     {
         /**
          * @var BinTableProvider
@@ -58,7 +58,7 @@ class BinTableProviderTest extends KernelTestCase
         $this->assertEquals('United Kingdom of Great Britain and Northern Ireland', $response->getCountryName());
     }
 
-    public function testBinListNotFound()
+    public function testBinTableNotFound()
     {
         /**
          * @var BinTableProvider

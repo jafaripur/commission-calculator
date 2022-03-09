@@ -5,6 +5,7 @@ LABEL org.opencontainers.image.authors="mjafaripur@yahoo.com"
 
 ARG CURRENCY_FREAK_API
 ARG BIN_TABLE_API
+ARG BIN_CODES_API
 
 RUN apk update && apk upgrade && echo "UTC" > /etc/timezone \
 	&& apk add --no-cache autoconf gcc binutils binutils-dev g++ libtool make \
@@ -38,7 +39,7 @@ COPY --chown=app_user --from=composer:latest /usr/bin/composer .
 
 ENV COMPOSER_HOME /app/.composer
 
-RUN /app/docker/prod-env.sh $CURRENCY_FREAK_API $BIN_TABLE_API
+RUN /app/docker/prod-env.sh $CURRENCY_FREAK_API $BIN_TABLE_API $BIN_CODES_API
 
 RUN rm -rf /app/docker && mkdir /app/.composer/ \
 	&& /app/composer validate --strict \

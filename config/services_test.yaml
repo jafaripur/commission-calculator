@@ -22,6 +22,17 @@ services:
         $cacheKey: '%env(APP_BIN_LIST_LOOKUP_CACHE_KEY)%'
         $cacheExpireSecond: '%env(int:APP_BIN_LIST_LOOKUP_CACHE_EXPIRE_SECOND)%'
 
+  App\Service\BinProvider\Providers\BinCodesProvider:
+    public: true
+    arguments:
+        $http: '@App\Service\HttpRequest\HttpRequestService'
+        $cache: '@cache.app'
+        $token: '%env(APP_BIN_CODES_LOOKUP_API_KEY)%'
+        $endpoint: '%env(APP_BIN_CODES_LOOKUP_ENDPOINT)%'
+        $cacheEnabled: '%env(bool:APP_BIN_CODES_LOOKUP_CACHE)%'
+        $cacheKey: '%env(APP_BIN_CODES_LOOKUP_CACHE_KEY)%'
+        $cacheExpireSecond: '%env(int:APP_BIN_CODES_LOOKUP_CACHE_EXPIRE_SECOND)%'
+        
   App\Service\BinProvider\Providers\BinTableProvider:
     public: true
     arguments:
