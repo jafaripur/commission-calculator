@@ -16,9 +16,17 @@ Override some configuration for deployment and test environment. Sample of confi
 After installing composer with install command this file will be created if not exist:
 
 ```
-
 .env.local
 .env.test.local
+```
+
+Get API key:
+
+
+```
+https://currencyfreaks.com   Env variable: CURRENCY_FREAK_API
+https://www.bincodes.com     Env variable: BIN_TABLE_API
+https://bintable.com         Env variable: BIN_CODES_API
 
 ```
 
@@ -50,7 +58,8 @@ export DOCKER_BUILDKIT=1 && docker build \
     -f "./docker/Dockerfile.prod" \
     -t "commission-calculator-prod:latest" . \
     --build-arg CURRENCY_FREAK_API=<api_key> \
-    --build-arg BIN_TABLE_API=<api_key>
+    --build-arg BIN_TABLE_API=<api_key> \
+    --build-arg BIN_CODES_API=<api_key>
 
 ```
 
@@ -99,7 +108,8 @@ export DOCKER_BUILDKIT=1 && docker build \
     -f "./docker/Dockerfile" \
     -t "commission-calculator-test:latest" . \
     --build-arg CURRENCY_FREAK_API=<api_key> \
-    --build-arg BIN_TABLE_API=<api_key>
+    --build-arg BIN_TABLE_API=<api_key> \
+    --build-arg BIN_CODES_API=<api_key>
 
 ```
 
