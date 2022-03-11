@@ -26,7 +26,7 @@ class CommisionCalculateCommand extends Command
         private BinProviderInterface $binCodes,
         private ContainerBagInterface $params
     ) {
-        parent::__construct();
+        parent::__construct();        
     }
 
     protected function configure(): void

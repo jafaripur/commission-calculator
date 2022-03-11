@@ -33,9 +33,9 @@ class CurrencyFakeProviderTest extends KernelTestCase
     public function testGetCurrencyRate()
     {
         /**
-         * @var CurrencyFreakProvider
+         * @var CurrencyFakeProvider
          */
-        $currency = static::getContainer()->get(CurrencyFreakProvider::class);
+        $currency = static::getContainer()->get(CurrencyFakeProvider::class);
         $currency->load();
 
         $this->assertIsNumeric($currency->getCurrencyRate('EUR'));
@@ -50,19 +50,18 @@ class CurrencyFakeProviderTest extends KernelTestCase
     public function testConvert()
     {
         /**
-         * @var CurrencyFreakProvider
+         * @var CurrencyFakeProvider
          */
-        $currency = static::getContainer()->get(CurrencyFreakProvider::class);
+        $currency = static::getContainer()->get(CurrencyFakeProvider::class);
         $currency->load();
 
         $this->assertEquals(100, $currency->convert(100, 'USD', 'USD'));
-        $this->assertEquals(91.7481, $currency->convert(100, 'USD', 'EUR'));
-        $this->assertEquals(11575.2, $currency->convert(100, 'USD', 'JPY'));
-        $this->assertEquals(76.3266, $currency->convert(100, 'USD', 'GBP'));
-
-        $this->assertEquals(0.6593976777939, $currency->convert(100, 'JPY', 'GBP'));
-        $this->assertEquals(131.01592367536, $currency->convert(100, 'GBP', 'USD'));
-        $this->assertEquals(15165.355197270675, $currency->convert(100, 'GBP', 'JPY'));
-        $this->assertEquals(83.191477534685, $currency->convert(100, 'EUR', 'GBP'));
+        $this->assertEquals(92.0276, $currency->convert(100, 'USD', 'EUR'));
+        $this->assertEquals(11536.89, $currency->convert(100, 'USD', 'JPY'));
+        $this->assertEquals(76.2562, $currency->convert(100, 'USD', 'GBP'));
+        $this->assertEquals(0.66097709174656, $currency->convert(100, 'JPY', 'GBP'));
+        $this->assertEquals(131.13687805057, $currency->convert(100, 'GBP', 'USD'));
+        $this->assertEquals(15129.117370128592, $currency->convert(100, 'GBP', 'JPY'));
+        $this->assertEquals(82.862315218478, $currency->convert(100, 'EUR', 'GBP'));
     }
 }
