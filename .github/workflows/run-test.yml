@@ -32,7 +32,13 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Build the Docker images
-      run: export DOCKER_BUILDKIT=1 && docker build -f docker/Dockerfile -t "commission-calculator-test:latest" . --build-arg CURRENCY_FREAK_API=${{ secrets.currency_freak_api }} --build-arg BIN_TABLE_API=${{ secrets.bin_table_api }} --build-arg BIN_CODES_API=${{ secrets.bin_codes_api }}
+      run: | 
+        export DOCKER_BUILDKIT=1
+        docker build -f docker/Dockerfile -t "commission-calculator-test:latest" . \
+          --build-arg APP_SECRET=${{ secrets.app_secret }} \
+          --build-arg CURRENCY_FREAK_API=${{ secrets.currency_freak_api }} \
+          --build-arg BIN_TABLE_API=${{ secrets.bin_table_api }} \
+          --build-arg BIN_CODES_API=${{ secrets.bin_codes_api }}
 
     - name: Run test
       run: docker run --rm commission-calculator-test:latest

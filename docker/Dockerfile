@@ -3,6 +3,7 @@ FROM php:8.0.16-cli-alpine
 LABEL description="Dockerfile for build in https://github.com/jafaripur/commission-calculator"
 LABEL org.opencontainers.image.authors="mjafaripur@yahoo.com"
 
+ARG APP_SECRET
 ARG CURRENCY_FREAK_API
 ARG BIN_TABLE_API
 ARG BIN_CODES_API
@@ -39,7 +40,7 @@ COPY --chown=app_user --from=composer:latest /usr/bin/composer .
 
 ENV COMPOSER_HOME /app/.composer
 
-RUN /app/docker/test-env.sh $CURRENCY_FREAK_API $BIN_TABLE_API $BIN_CODES_API
+RUN /app/docker/test-env.sh $APP_SECRET $CURRENCY_FREAK_API $BIN_TABLE_API $BIN_CODES_API
 
 RUN rm -rf /app/docker && mkdir /app/.composer/ \
 	&& /app/composer validate --strict \

@@ -1,16 +1,16 @@
 services:
-
+  
   App\Service\CurrencyProvider\Providers\CurrencyFreakProvider:
-      public: true
-      arguments:
-          $http: '@App\Service\HttpRequest\HttpRequestService'
-          $cache: '@cache.app'
-          $token: '%env(APP_CURRENCY_FREAK_LOOKUP_API_KEY)%'
-          $endpoint: '%env(APP_CURRENCY_FREAK_LOOKUP_ENDPOINT)%'
-          $baseCurrency: '%env(APP_CURRENCY_FREAK_LOOKUP_BASE_CURRENCY)%'
-          $cacheEnabled: '%env(bool:APP_CURRENCY_FREAK_LOOKUP_CACHE)%'
-          $cacheKey: '%env(APP_CURRENCY_FREAK_LOOKUP_CACHE_KEY)%'
-          $cacheExpireSecond: '%env(int:APP_CURRENCY_FREAK_LOOKUP_CACHE_EXPIRE_SECOND)%'
+    public: true
+    arguments:
+        $http: '@App\Service\HttpRequest\HttpRequestService'
+        $cache: '@cache.app'
+        $token: '%env(APP_CURRENCY_FREAK_LOOKUP_API_KEY)%'
+        $endpoint: '%env(APP_CURRENCY_FREAK_LOOKUP_ENDPOINT)%'
+        $baseCurrency: '%env(APP_CURRENCY_FREAK_LOOKUP_BASE_CURRENCY)%'
+        $cacheEnabled: '%env(bool:APP_CURRENCY_FREAK_LOOKUP_CACHE)%'
+        $cacheKey: '%env(APP_CURRENCY_FREAK_LOOKUP_CACHE_KEY)%'
+        $cacheExpireSecond: '%env(int:APP_CURRENCY_FREAK_LOOKUP_CACHE_EXPIRE_SECOND)%'
 
   App\Service\BinProvider\Providers\BinListProvider:
     public: true

@@ -57,6 +57,7 @@ Build image:
 export DOCKER_BUILDKIT=1 && docker build \
     -f "./docker/Dockerfile.prod" \
     -t "commission-calculator-prod:latest" . \
+    --build-arg APP_SECRET=<api_key> \
     --build-arg CURRENCY_FREAK_API=<api_key> \
     --build-arg BIN_TABLE_API=<api_key> \
     --build-arg BIN_CODES_API=<api_key>
@@ -107,6 +108,7 @@ Build the test docker image:
 export DOCKER_BUILDKIT=1 && docker build \
     -f "./docker/Dockerfile" \
     -t "commission-calculator-test:latest" . \
+    --build-arg APP_SECRET=<api_key> \
     --build-arg CURRENCY_FREAK_API=<api_key> \
     --build-arg BIN_TABLE_API=<api_key> \
     --build-arg BIN_CODES_API=<api_key>
