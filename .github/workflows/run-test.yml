@@ -4,7 +4,7 @@ on:
   push:
     branches: ['dev']
     path:
-      - .github/run-test.yml
+      - .github/workflows/run-test.yml
       - src/**
       - tests/**
       - docker/**
@@ -14,7 +14,7 @@ on:
   pull_request:
     branches: ['dev']
     path:
-      - .github/run-test.yml
+      - .github/workflows/run-test.yml
       - src/**
       - tests/**
       - docker/**
