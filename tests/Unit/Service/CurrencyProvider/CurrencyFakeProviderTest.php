@@ -3,7 +3,6 @@
 namespace App\Tests\Unit\Service\CurrencyProvider;
 
 use App\Service\CurrencyProvider\Providers\CurrencyFakeProvider;
-use App\Service\CurrencyProvider\Providers\CurrencyFreakProvider;
 use App\Service\CurrencyProvider\ServiceInternal\Exception\CurrencyRateNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

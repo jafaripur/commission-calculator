@@ -14,7 +14,6 @@ class CommissionCalculatorCommandTest extends KernelTestCase
 {
     public function testExecute()
     {
-
         $kernel = self::bootKernel();
 
         $container = $this->getContainer();
