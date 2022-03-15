@@ -3,7 +3,7 @@
 ![prod-build](https://github.com/jafaripur/commission-calculator/actions/workflows/build-prod.yml/badge.svg)
 ![test](https://github.com/jafaripur/commission-calculator/actions/workflows/run-test.yml/badge.svg)
 
-This project is refactoring of [Paysera](https://gist.github.com/PayseraGithub/634074b26e1a2a5e4b8d39b8eb050f9f) (Task - PHP - Refactoring)
+This project is refactoring of this [Task](https://gist.github.com/PayseraGithub/634074b26e1a2a5e4b8d39b8eb050f9f) (Task - PHP - Refactoring)
 
 Detect country by Bin and calculate commission based on country.
 
