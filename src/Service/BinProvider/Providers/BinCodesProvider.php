@@ -28,11 +28,13 @@ final class BinCodesProvider implements BinProviderInterface
         private string $cacheKey = self::CACHE_KEY,
         private int $cacheExpireSecond = 3600, // 1 Hour
     ) {
-        if ($this->cacheEnabled && empty($this->cacheKey)) {
-            $this->cacheKey = self::CACHE_KEY;
-        }
+        if ($this->cacheEnabled) {
+            if (empty($this->cacheKey)) {
+                $this->cacheKey = self::CACHE_KEY;
+            }
 
-        $this->cacheKey = md5($this->cacheKey.$this->token);
+            $this->cacheKey = md5($this->cacheKey.$this->token);
+        }
     }
 
     public function get(string $identity): BinInformation
